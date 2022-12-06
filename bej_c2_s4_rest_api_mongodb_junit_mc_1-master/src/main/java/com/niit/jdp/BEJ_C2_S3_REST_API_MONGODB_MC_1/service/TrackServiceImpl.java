@@ -43,15 +43,6 @@ public class TrackServiceImpl implements TrackService {
         return trackRepository.save(track);
     }
 
-    @Override
-    public boolean deleteTrackById(int trackId) throws TrackNotExists {
-        if (trackRepository.findById(trackId).isEmpty()) {
-            throw new TrackNotExists();
-        }
-        trackRepository.deleteById(trackId);
-        return true;
-    }
-
     /**
      * > The function returns a list of all tracks in the database
      *
@@ -85,7 +76,14 @@ public class TrackServiceImpl implements TrackService {
      * @param trackId The id of the track to be deleted.
      * @return boolean
      */
-
+    @Override
+    public boolean deleteTrackById(int trackId) throws TrackNotExists {
+        if (trackRepository.findById(trackId).isEmpty()) {
+            throw new TrackNotExists();
+        }
+        trackRepository.deleteById(trackId);
+        return true;
+    }
 
     /**
      * > This function is used to find all the tracks with the given track name

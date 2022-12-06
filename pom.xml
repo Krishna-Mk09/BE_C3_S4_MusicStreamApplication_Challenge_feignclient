@@ -10,7 +10,7 @@
     </parent>
 
     <modules>
-        <module>bej_c2_s3_rest_api_mongodb_mc_1-master</module>
+        <module>bej_c2_s4_rest_api_mongodb_junit_mc_1-master</module>
         <module>userauthentication-demo-by-mam-master</module>
     </modules>
 

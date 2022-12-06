@@ -90,10 +90,9 @@ public class TrackController {
     @DeleteMapping("/DeleteTracksById/{trackId}")
     public ResponseEntity<?> DeleteTracksByIdFunction(@PathVariable int trackId) throws TrackNotExists {
         try {
-            trackService.deleteTrackById(trackId);
-            return new ResponseEntity<>("Track Record Deleted", HttpStatus.OK);
+            return new ResponseEntity<>(trackService.deleteTrackById(trackId), HttpStatus.OK);
         } catch (TrackNotExists e) {
-            throw new TrackNotExists();
+            throw new RuntimeException(e);
         } catch (Exception e) {
             return new ResponseEntity<>("Server Error!!!Try after Sometime", HttpStatus.INTERNAL_SERVER_ERROR);
         }

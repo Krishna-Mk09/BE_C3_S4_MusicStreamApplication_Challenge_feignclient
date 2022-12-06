@@ -1,21 +1,21 @@
 version: '3.9'
 services:
-  customer-service:
+  track-service:
     image: track_image
     container_name: track-service
-    build: BEJ_C2_S3_REST_API_MONGODB_MC_1/
+    build: bej_c2_s4_rest_api_mongodb_junit_mc_1-master/
     restart: always
     networks:
       - mynetwork
     ports:
-      - 8086:8086
+      - 8087:8087
     depends_on:
       - mongoService
 
 
   mongoService:
     image: mongo
-    container_name: mongoService
+    container_name: mongoService1
     ports:
       - 27017:27017
     networks:
@@ -23,20 +23,20 @@ services:
 
   authentication-service:
     image: authentication_image
-    container_name: authentication-service
+    container_name: authentication-service1
     build: userauthentication-demo-by-mam-master/
     restart: always
     networks:
       - mynetwork
     ports:
-      - 8080:8080
+      - 8081:8081
     depends_on:
       - mysqlService
 
 
   mysqlService:
     image: mysql:latest
-    container_name: mysqlService
+    container_name: mysqlService1
     networks:
       - mynetwork
     ports:
