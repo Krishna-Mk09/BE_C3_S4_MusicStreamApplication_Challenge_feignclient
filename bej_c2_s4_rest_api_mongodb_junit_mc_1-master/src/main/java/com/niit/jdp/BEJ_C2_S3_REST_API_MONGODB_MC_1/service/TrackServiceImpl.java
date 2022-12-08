@@ -11,6 +11,7 @@ package com.niit.jdp.BEJ_C2_S3_REST_API_MONGODB_MC_1.service;
 import com.niit.jdp.BEJ_C2_S3_REST_API_MONGODB_MC_1.domain.Track;
 import com.niit.jdp.BEJ_C2_S3_REST_API_MONGODB_MC_1.exception.TrackAlreadyExists;
 import com.niit.jdp.BEJ_C2_S3_REST_API_MONGODB_MC_1.exception.TrackNotExists;
+import com.niit.jdp.BEJ_C2_S3_REST_API_MONGODB_MC_1.proxy.UserProxy;
 import com.niit.jdp.BEJ_C2_S3_REST_API_MONGODB_MC_1.repository.TrackRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,12 +23,14 @@ import java.util.Optional;
 public class TrackServiceImpl implements TrackService {
     // A field injection.
     private final TrackRepository trackRepository;
+    private final UserProxy userProxy;
 
-    // A constructor injection.
     @Autowired
-    public TrackServiceImpl(TrackRepository trackRepository) {
+    public TrackServiceImpl(TrackRepository trackRepository, UserProxy userProxy) {
         this.trackRepository = trackRepository;
+        this.userProxy = userProxy;
     }
+
 
     /**
      * It saves the track to the database.
@@ -40,6 +43,7 @@ public class TrackServiceImpl implements TrackService {
         if (trackRepository.findById(track.getTrackId()).isPresent()) {
             throw new TrackAlreadyExists();
         }
+        userProxy.saveUser(track);
         return trackRepository.save(track);
     }
 

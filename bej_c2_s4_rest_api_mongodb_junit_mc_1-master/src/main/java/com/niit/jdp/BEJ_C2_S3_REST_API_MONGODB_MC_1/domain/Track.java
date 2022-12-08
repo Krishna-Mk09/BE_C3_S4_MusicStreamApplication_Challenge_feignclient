@@ -16,15 +16,20 @@ public class Track {
     @Id
     private int trackId;
     private String trackName;
+    private String email;
+    private String password;
+
     private int trackRating;
     private Artist trackArtist;
 
     public Track() {
     }
 
-    public Track(int trackId, String trackName, int trackRating, Artist trackArtist) {
+    public Track(int trackId, String trackName, String email, String password, int trackRating, Artist trackArtist) {
         this.trackId = trackId;
         this.trackName = trackName;
+        this.email = email;
+        this.password = password;
         this.trackRating = trackRating;
         this.trackArtist = trackArtist;
     }
@@ -45,6 +50,22 @@ public class Track {
         this.trackName = trackName;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public int getTrackRating() {
         return trackRating;
     }
@@ -63,6 +84,13 @@ public class Track {
 
     @Override
     public String toString() {
-        return "Track{" + "trackId=" + trackId + ", trackName='" + trackName + '\'' + ", trackRating=" + trackRating + ", trackArtist=" + trackArtist + '}';
+        return "Track{" +
+                "trackId=" + trackId +
+                ", trackName='" + trackName + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", trackRating=" + trackRating +
+                ", trackArtist=" + trackArtist +
+                '}';
     }
 }

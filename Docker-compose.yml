@@ -23,7 +23,7 @@ services:
       - mynetwork
 
 
-  UserAuthenticate:
+  UserAuthenticate :
     image: authentication_image
     container_name: authentication-service
     build: userauthentication-demo-by-mam-master/
