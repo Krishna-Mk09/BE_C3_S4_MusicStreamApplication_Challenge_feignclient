@@ -7,7 +7,7 @@
         <artifactId>BE_C3_S4_MusicStreamApplication_Challenge</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <groupId>com.niit.jdp</groupId>
+
     <artifactId>BEJ_C2_S3_REST_API_MONGODB_MC_1</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>BEJ_C2_S3_REST_API_MONGODB_MC_1</name>

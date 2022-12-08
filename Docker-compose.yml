@@ -1,8 +1,8 @@
 version: '3.9'
 services:
-  track-service:
-    image: track_image
-    container_name: track-service
+  customer-service:
+    image: customer_image
+    container_name: customer-service
     build: bej_c2_s4_rest_api_mongodb_junit_mc_1-master/
     restart: always
     networks:
@@ -11,19 +11,21 @@ services:
       - 8087:8087
     depends_on:
       - mongoService
+      - cloudapiservice
 
 
   mongoService:
     image: mongo
-    container_name: mongoService1
+    container_name: mongoService
     ports:
       - 27017:27017
     networks:
       - mynetwork
 
-  authentication-service:
+
+  UserAuthenticate:
     image: authentication_image
-    container_name: authentication-service1
+    container_name: authentication-service
     build: userauthentication-demo-by-mam-master/
     restart: always
     networks:
@@ -32,11 +34,11 @@ services:
       - 8081:8081
     depends_on:
       - mysqlService
-
+      - cloudapiservice
 
   mysqlService:
     image: mysql:latest
-    container_name: mysqlService1
+    container_name: mysqlService
     networks:
       - mynetwork
     ports:
@@ -46,6 +48,17 @@ services:
       MYSQL_USERNAME: root
       MYSQL_PASSWORD: root
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+
+  cloudapiservice:
+    container_name: cloudapi
+    build: springAPIGateWay/
+    restart: always
+    networks:
+      - mynetwork
+    ports:
+      - 9005:9005
+
+
 
 networks:
   mynetwork:
