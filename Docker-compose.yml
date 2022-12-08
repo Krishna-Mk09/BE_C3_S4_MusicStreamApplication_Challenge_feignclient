@@ -58,6 +58,14 @@ services:
     ports:
       - 9005:9005
 
+  eureka-service:
+    container_name: containerEureka
+    build: Eureka_server_Challenge/
+    restart: always
+    networks:
+      - mynetwork
+    ports:
+      - 8761:8761
 
 
 networks:
