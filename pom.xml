@@ -13,6 +13,7 @@
         <module>bej_c2_s4_rest_api_mongodb_junit_mc_1-master</module>
         <module>userauthentication-demo-by-mam-master</module>
         <module>springAPIGateWay</module>
+        <module>Eureka_server_Challenge</module>
     </modules>
 
     <packaging>pom</packaging>
